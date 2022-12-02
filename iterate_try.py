@@ -33,14 +33,14 @@ def try_iter(code_string, byline=True, except_case="pass"):
     else:
         tabbed = False
         for c in old_string:
-            if c != '<' and c != '>':
+            if c != '%' and c != '^':
                 new_string += c
                 if tabbed and c == '\n':
                     new_string += '\t'
-            elif c == '<':
+            elif c == '%':
                 new_string += 'try:\n\t'
                 tabbed = True
-            elif c == '>':
+            elif c == '^':
                 new_string += '\nexcept:\n\t' + except_case
                 tabbed = False
     return new_string
